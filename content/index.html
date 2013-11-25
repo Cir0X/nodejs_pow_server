@@ -1,0 +1,174 @@
+<html>
+
+<head>
+	<script language="javascript">
+
+	var p2worker;
+	var p3worker;
+	var p4worker;
+	var p5worker;
+	var p6worker;
+	var p7worker;
+	var p8worker;
+	var p9worker;
+	var p10worker;
+	var p11worker;
+	function startWorker() {
+		if(typeof(Worker)!=="undefined") {
+			if(typeof(p2worker)=="undefined") {
+				p2worker=new Worker("pow2worker.js");
+				p3worker=new Worker("pow3worker.js");
+				p4worker=new Worker("pow4worker.js");
+				p5worker=new Worker("pow5worker.js");
+				p6worker=new Worker("pow6worker.js");
+				p7worker=new Worker("pow7worker.js");
+				p8worker=new Worker("pow8worker.js");
+				p9worker=new Worker("pow9worker.js");
+				p10worker=new Worker("pow10worker.js");
+				p11worker=new Worker("pow11worker.js");
+
+			}
+
+		// Webworker Eventhandler
+		p2worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p2wCalc').value=arr[0];
+			document.getElementById('p2wResult').value=arr[1];
+		};
+
+		p3worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p3wCalc').value=arr[0];
+			document.getElementById('p3wResult').value=arr[1];
+		};
+
+		p4worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p4wCalc').value=arr[0];
+			document.getElementById('p4wResult').value=arr[1];
+		};
+
+		p5worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p5wCalc').value=arr[0];
+			document.getElementById('p5wResult').value=arr[1];
+		};
+
+		p6worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p6wCalc').value=arr[0];
+			document.getElementById('p6wResult').value=arr[1];
+		};
+
+		p7worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p7wCalc').value=arr[0];
+			document.getElementById('p7wResult').value=arr[1];
+		};
+
+		p8worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p8wCalc').value=arr[0];
+			document.getElementById('p8wResult').value=arr[1];
+		};
+
+		p9worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p9wCalc').value=arr[0];
+			document.getElementById('p9wResult').value=arr[1];
+		};
+
+		p10worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p10wCalc').value=arr[0];
+			document.getElementById('p10wResult').value=arr[1];
+		};
+
+		p11worker.onmessage = function (event) {
+			console.log("Calc: " + event.data);
+			var arr = event.data.split('=');
+			document.getElementById('p11wCalc').value=arr[0];
+			document.getElementById('p11wResult').value=arr[1];
+		};
+		
+	}
+	else {
+		// Exception when the Browser does not supprt Web Workers
+		console.log("Sorry, your browser does not support Web Workers...")
+		document.getElementById("exception").innerHTML="Sorry, your browser does not support Web Workers...";
+	}
+}
+
+function stopWorker() { 
+	p2worker.terminate();
+	p3worker.terminate();
+	p4worker.terminate();
+	p5worker.terminate();
+	p6worker.terminate();
+	p7worker.terminate();
+	p8worker.terminate();
+	p9worker.terminate();
+	p10worker.terminate();
+	p11worker.terminate();
+
+	p2worker = undefined;
+	p3worker = undefined;
+	p4worker = undefined;
+	p5worker = undefined;
+	p6worker = undefined;
+	p7worker = undefined;
+	p8worker = undefined;
+	p9worker = undefined;
+	p10worker = undefined;
+	p11worker = undefined;
+}
+
+</script>
+
+</head>
+
+<body bgcolor="gray">
+	<p>		<label id="exception"></label>
+
+		<button onclick="startWorker()">Start Worker</button> 
+		<button onclick="stopWorker()">Stop Worker</button>
+	</p>
+
+	<p>
+		<input type="text" id="p2wCalc" readonly> = <input type="text" id="p2wResult" readonly>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" id="p3wCalc" readonly> = <input type="text" id="p3wResult" readonly>
+	</p>
+	<p>
+		<input type="text" id="p4wCalc" readonly> = <input type="text" id="p4wResult" readonly>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" id="p5wCalc" readonly> = <input type="text" id="p5wResult" readonly>
+	</p>
+	<p>
+		<input type="text" id="p6wCalc" readonly> = <input type="text" id="p6wResult" readonly>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" id="p7wCalc" readonly> = <input type="text" id="p7wResult" readonly>
+	</p>
+	<p>
+		<input type="text" id="p8wCalc" readonly> = <input type="text" id="p8wResult" readonly>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" id="p9wCalc" readonly> = <input type="text" id="p9wResult" readonly>
+	</p>
+	<p>
+		<input type="text" id="p10wCalc" readonly> = <input type="text" id="p10wResult" readonly>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" id="p11wCalc" readonly> = <input type="text" id="p11wResult" readonly>
+	</p>
+</body>
+
+
+</html>
